@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "E-Hentai 漫畫追蹤器",
+  "version": "0.8.0",
+  "description": "追蹤你喜歡的 E-Hentai comics",
+  "default_locale": "zh_TW",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "scripting",
+    "tabs",
+    "offscreen",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "https://api.e-hentai.org/*",
+    "https://e-hentai.org/rss/ehg.xml",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["sidebar.css"]
+    }
+  ],
+  "action": {
+    "default_title": "__MSG_extensionName__"
+  },
+  "options_page": "options.html",
+  "offscreen": {
+    "path": "offscreen.html",
+    "reason": "DOM_PARSER",
+    "justification": "Need to parse RSS XML string which requires DOMParser."
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+} 

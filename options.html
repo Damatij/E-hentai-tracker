@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-Hentai Tracker 選項</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="sidebar">
+    <a href="#tags-management" class="nav-link active">標籤管理</a>
+    <a href="#update-frequency" class="nav-link">更新頻率設定</a>
+    <a href="#general-settings" class="nav-link">一般設定</a>
+    <a href="#import-export" class="nav-link">匯入/匯出設定</a>
+    <a href="#about" class="nav-link">關於</a>
+  </div>
+
+  <div class="main-content">
+    <h1>E-Hentai Tracker 選項</h1>
+
+    <div id="tags-management" class="content-section active">
+      <h2>標籤管理</h2>
+      <p data-translate-key="manageTagsDescription">在此處新增或移除您想追蹤的標籤。點擊下方的快速新增按鈕，或手動輸入後新增。</p>
+      
+      <div class="tags-management-layout">
+        <div class="tags-main-column">
+            <div class="tags-main-container">
+                <div class="tag-category-section">
+                    <h3 data-translate-key="categoryTagsLabel">Category 標籤</h3>
+                    <input type="text" id="category-input" data-translate-placeholder="categoryInputPlaceholder" placeholder="例如: doujinshi">
+                    <button id="add-category-button" data-translate-key="addCategoryButton">新增 Category</button>
+                    <h4 data-translate-key="quickAddCategoryLabel">快速新增 Category 標籤:</h4>
+                    <div id="predefined-categories-container" class="tags-container">
+                        <!-- Predefined category buttons -->
+                    </div>
+                </div>
+        
+                <div class="tag-category-section">
+                    <h3 data-translate-key="artistTagsLabel">Artist 標籤</h3>
+                    <input type="text" id="artist-input" data-translate-placeholder="artistInputPlaceholder" placeholder="例如: aiue oka">
+                    <button id="add-artist-button" data-translate-key="addArtistButton">新增 Artist</button>
+                    <h4 data-translate-key="quickAddArtistLabel">快速新增 Artist 標籤:</h4>
+                    <div id="predefined-artists-container" class="tags-container">
+                        <!-- Predefined artist buttons -->
+                    </div>
+                </div>
+        
+                <div class="tag-category-section">
+                    <h3 data-translate-key="groupTagsLabel">Group 標籤</h3>
+                    <input type="text" id="group-input" data-translate-placeholder="groupInputPlaceholder" placeholder="例如: neko works">
+                    <button id="add-group-button" data-translate-key="addGroupButton">新增 Group</button>
+                    <h4 data-translate-key="quickAddGroupLabel">快速新增 Group 標籤:</h4>
+                    <div id="predefined-groups-container" class="tags-container">
+                        <!-- Predefined group buttons -->
+                    </div>
+                </div>
+        
+                <div class="tag-category-section">
+                    <h3 data-translate-key="languageTagsLabel">Language 標籤</h3>
+                    <input type="text" id="language-input" data-translate-placeholder="languageInputPlaceholder" placeholder="例如: chinese (中文)">
+                    <button id="add-language-button" data-translate-key="addLanguageButton">新增 Language</button>
+                    <h4 data-translate-key="quickAddLanguageLabel">快速新增 Language 標籤:</h4>
+                    <div id="predefined-languages-container" class="tags-container">
+                        <!-- Predefined language buttons -->
+                    </div>
+                </div>
+        
+                <div class="tag-category-section">
+                    <h3 data-translate-key="parodyTagsLabel">Parody 標籤</h3>
+                    <input type="text" id="parody-input" data-translate-placeholder="parodyInputPlaceholder" placeholder="例如: fate grand order (天命/冠位指定)">
+                    <button id="add-parody-button" data-translate-key="addParodyButton">新增 Parody</button>
+                    <h4 data-translate-key="quickAddParodyLabel">快速新增 Parody 標籤:</h4>
+                    <div id="predefined-parodies-container" class="tags-container">
+                        <!-- Predefined parody buttons -->
+                    </div>
+                </div>
+        
+                <div class="tag-category-section">
+                    <h3 data-translate-key="characterTagsLabel">Character 標籤</h3>
+                    <input type="text" id="character-input" data-translate-placeholder="characterInputPlaceholder" placeholder="例如: hatsune miku (初音未來)">
+                    <button id="add-character-button" data-translate-key="addCharacterButton">新增 Character</button>
+                    <h4 data-translate-key="quickAddCharacterLabel">快速新增 Character 標籤:</h4>
+                    <div id="predefined-characters-container" class="tags-container">
+                        <!-- Predefined character buttons -->
+                    </div>
+                </div>
+        
+                <div class="tag-category-section">
+                    <h3 data-translate-key="femaleTagsLabel">Female 標籤 (內容導向)</h3>
+                    <input type="text" id="female-input" data-translate-placeholder="femaleInputPlaceholder" placeholder="例如: lolicon (蘿莉控)">
+                    <button id="add-female-button" data-translate-key="addFemaleButton">新增 Female 標籤</button>
+                    <h4 data-translate-key="quickAddFemaleLabel">快速新增 Female 標籤:</h4>
+                    <div id="predefined-females-container" class="tags-container">
+                        <!-- Predefined female buttons -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="blacklist-column">
+            <div class="blacklist-section-container">
+                <h3 data-translate-key="blacklistTagsSectionTitle">黑名單標籤管理</h3>
+                <p data-translate-key="blacklistTagsDescription">加入黑名單的標籤將不會被追蹤，即使它們符合您追蹤的 Artist 或 Group。</p>
+                
+                <h4 data-translate-key="quickAddBlacklistLabel">快速新增黑名單標籤:</h4>
+                <div id="predefined-blacklist-tags-container" class="tags-container" style="margin-bottom: 15px;">
+                    <!-- Predefined blacklist tag buttons will go here -->
+                </div>
+
+                <input type="text" id="blacklist-input" data-translate-placeholder="blacklistInputPlaceholder" placeholder="輸入標籤 (例如: yaoi)">
+                <button id="add-blacklist-tag-button" data-translate-key="addBlacklistButton">新增至黑名單</button>
+                <h4 data-translate-key="currentBlacklistLabel">目前黑名單中的標籤:</h4>
+                <div id="blacklisted-tags-container" class="tags-container">
+                    <!-- Blacklisted tags will be listed here as removable buttons -->
+                </div>
+            </div>
+
+            <div id="ad-container" class="ad-in-column">
+                <h4 class="ad-header">連結</h4>
+                <div class="ad-banner">
+                    <p style='padding:0;margin: 5px 0;color:#ff0000;'><a href='https://buyforfun.biz/3NSsS' target='_blank' style='display:inline-block;float:none;padding:0;margin:5px 0;color:#ff0000;text-decoration: none;'><img style='display:inline;border:0;max-width:100%;width:500px;height:500px;' src='https://img.oeya.com/images/202405/1714978573988128334.png'/></a></p>
+                    <img src="https://adcenter.conn.tw/track/oeya_url_image.php?key=71f85a0ffa0b8ad4dfd104aa2db35b74" style="height:1px;width:1px;border:0" />
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="update-frequency" class="content-section">
+      <h2 data-translate-key="updateFrequencyTitle">更新頻率設定</h2>
+      <div class="settings-section">
+        <label for="update-frequency-select" data-translate-key="checkFrequencyLabel">檢查新作品頻率:</label>
+        <select id="update-frequency-select">
+          <option value="20" data-translate-key="freq20min">20 分鐘</option>
+          <option value="40" data-translate-key="freq40min">40 分鐘</option>
+          <option value="60" data-translate-key="freq1hrDefault">1 小時 (預設)</option>
+          <option value="120" data-translate-key="freq2hr">2 小時</option>
+          <option value="360" data-translate-key="freq6hr">6 小時</option>
+          <option value="1440" data-translate-key="freq24hr">24 小時</option> 
+        </select>
+        <button id="update-now-button" data-translate-key="updateNowButton" style="margin-left: 10px;">立即更新</button>
+      </div>
+    </div>
+
+    <div id="general-settings" class="content-section">
+      <h2 data-translate-key="generalSettingsTitle">一般設定</h2>
+      <div class="settings-section">
+        <label for="language-select" data-translate-key="selectLanguageLabel">選擇顯示語言:</label>
+        <select id="language-select">
+          <option value="zh-TW">繁體中文 (Traditional Chinese)</option>
+          <option value="en">English</option>
+          <option value="ja">日本語 (Japanese)</option>
+          <option value="ko">한국어 (Korean)</option>
+          <option value="es">Español (Spanish)</option>
+        </select>
+      </div>
+
+      <div class="settings-section" id="desktop-notifications-section">
+        <h3 data-translate-key="desktopNotificationsSectionTitle">桌面通知</h3>
+        <label class="toggle-switch-label" for="desktop-notifications-toggle">
+          <input type="checkbox" id="desktop-notifications-toggle">
+          <span class="slider"></span>
+          <span id="desktop-notifications-label-text" data-translate-key="desktopNotificationsLabel">在新作品發現時顯示桌面通知</span>
+        </label>
+      </div>
+    </div>
+
+    <div id="import-export" class="content-section">
+      <h2 data-translate-key="importExportTitle">匯入/匯出設定</h2>
+      <div class="settings-section">
+        <button id="export-settings-button" data-translate-key="exportSettingsButton">匯出設定</button>
+        <p data-translate-key="exportDescription" style="font-size: 0.9em; color: #666;">將您目前的追蹤列表、黑名單和一般設定儲存到檔案中。</p>
+      </div>
+      <div class="settings-section">
+        <button id="import-settings-button" data-translate-key="importSettingsButton">匯入設定</button>
+        <input type="file" id="import-file-input" accept=".json" style="display: none;">
+        <p data-translate-key="importDescription" style="font-size: 0.9em; color: #666;">從先前儲存的檔案載入追蹤列表、黑名單和一般設定。這將會覆寫目前的設定。</p>
+      </div>
+    </div>
+
+    <div id="about" class="content-section">
+      <h2 data-translate-key="aboutTitle">關於</h2>
+      <p data-translate-key="aboutSectionPara1">E-Hentai Tracker v0.7.0</p>
+      <p data-translate-key="aboutSectionPara2">協助您追蹤喜愛的 E-Hentai 內容。</p>
+    </div>
+
+  </div>
+  
+  <div id="status"></div>
+  <script src="options.js"></script>
+</body>
+</html> 

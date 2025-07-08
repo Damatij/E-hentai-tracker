@@ -1,0 +1,342 @@
+/* Styles for E-Hentai Tracker sidebar - 日式風格 */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+/* 側邊欄基本樣式 - 確保ID與實際DOM匹配 */
+#eh-tracker-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0; /* REMOVED !important TO ALLOW JS TO HIDE */
+  width: 320px !important;
+  height: 100% !important;
+  background-color: #4d6184 !important; /* 日式藍色調 - 後台主色 */
+  background-image: url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="%234d6184"/><path d="M0,0 L200,200 M200,0 L0,200" stroke="%23455677" stroke-width="1"/></svg>') !important;
+  background-size: 20px 20px !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15) !important;
+  z-index: 2147483647 !important;
+  transition: right 0.3s ease-in-out !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font-family: 'Noto Sans TC', Arial, sans-serif !important;
+  overflow: hidden !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 櫻花裝飾在側邊欄底部 - 與後台一致 */
+#eh-tracker-sidebar:after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 120px !important;
+  height: 120px !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23f8d7db" d="M50,15c-13.8,0-25,11.2-25,25s11.2,25,25,25s25-11.2,25-25S63.8,15,50,15z"/><path fill="%23f8d7db" d="M50,15c-13.8,0-25,11.2-25,25s11.2,25,25,25s25-11.2,25-25S63.8,15,50,15z" transform="rotate(36 50 50)"/><path fill="%23f8d7db" d="M50,15c-13.8,0-25,11.2-25,25s11.2,25,25,25s25-11.2,25-25S63.8,15,50,15z" transform="rotate(72 50 50)"/></svg>') !important;
+  opacity: 0.15 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* 側邊欄頭部 - 基於截圖調整 */
+#eh-tracker-sidebar .sidebar-header {
+  padding: 15px !important;
+  background-color: #333 !important;
+  color: white !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  position: relative !important;
+  font-family: 'Noto Sans TC', Arial, sans-serif !important;
+  margin-bottom: 0 !important;
+}
+
+#eh-tracker-sidebar .sidebar-header h2 {
+  margin: 0 !important;
+  font-size: 1.2em !important;
+  font-weight: 500 !important;
+  color: white !important;
+  text-align: center !important;
+  flex-grow: 1 !important;
+  font-family: 'Noto Sans TC', Arial, sans-serif !important;
+}
+
+#eh-tracker-sidebar .sidebar-close-button {
+  background: none !important;
+  border: none !important;
+  color: white !important;
+  font-size: 1.5em !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  transition: transform 0.2s ease-in-out !important;
+}
+
+#eh-tracker-sidebar .sidebar-close-button:hover {
+  transform: rotate(90deg) !important;
+}
+
+/* 控制按鈕區域 - 基於截圖調整 */
+#eh-tracker-sidebar .sidebar-controls {
+  padding: 12px !important;
+  background-color: #e0e0e0 !important;
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: center !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 立即更新按鈕 - 從截圖來看是綠色按鈕 */
+#eh-tracker-refresh-now-button {
+  padding: 8px 12px !important;
+  background-color: #d85a63 !important; /* 櫻花紅按鈕 */
+  color: white !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 0.9em !important;
+  font-family: 'Noto Sans TC', Arial, sans-serif !important;
+  font-weight: 500 !important;
+  flex: 1 !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+#eh-tracker-refresh-now-button:hover {
+  background-color: #c04a52 !important; /* 櫻花紅 hover */
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+#eh-tracker-refresh-now-button:disabled {
+  background-color: rgba(216, 90, 99, 0.5) !important; /* 櫻花紅 disabled */
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* 後台管理按鈕 - 從截圖來看是藍色按鈕 */
+#eh-tracker-open-options-button {
+  padding: 8px 12px !important;
+  background-color: #71879c !important; /* 藍灰色 */
+  color: white !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 0.9em !important;
+  font-family: 'Noto Sans TC', Arial, sans-serif !important;
+  font-weight: 500 !important;
+  flex: 1 !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+#eh-tracker-open-options-button:hover {
+  background-color: #5e7387 !important; /* 藍灰色 hover */
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 作品列表容器 */
+#eh-tracked-works-container {
+  overflow-y: auto !important;
+  padding: 12px !important;
+  flex-grow: 1 !important;
+  background-color: #f8f8f5 !important; /* 淺色背景 */
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23f8f8f5"/><path d="M0 0L100 100M100 0L0 100" stroke="%23f0e9e0" stroke-width="1"/></svg>') !important;
+  background-size: 20px 20px !important;
+  color: #444 !important; /* 恢復深色文字 */
+}
+
+/* 追蹤標籤最後更新區塊 */
+#last-uploads-summary {
+  padding: 12px !important;
+  margin-bottom: 15px !important;
+  background-color: white !important;
+  border: 1px solid #eee !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+#last-uploads-summary h4 {
+  margin: 0 0 10px 0 !important;
+  color: #4d6184 !important; /* 日式藍 */
+  font-size: 1.1em !important;
+  font-weight: 500 !important;
+  position: relative !important;
+  padding-left: 15px !important;
+}
+
+#last-uploads-summary h4:before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 6px !important;
+  height: 6px !important;
+  background-color: #d85a63 !important; /* 櫻花紅 */
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 2px rgba(216, 90, 99, 0.2) !important;
+}
+
+#last-uploads-summary ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+#last-uploads-summary li {
+  padding: 5px 0 !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  font-size: 0.9em !important;
+}
+
+#last-uploads-summary li:last-child {
+  border-bottom: none !important;
+}
+
+/* 作品項目 - 基於截圖樣式調整 */
+#eh-tracked-works-container .work-item {
+  display: flex !important;
+  margin-bottom: 15px !important;
+  padding: 12px !important;
+  background-color: white !important;
+  border: 1px solid #eee !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.25s !important;
+}
+
+#eh-tracked-works-container .work-item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+#eh-tracked-works-container .work-item img {
+  height: auto !important;
+  margin-right: 14px !important;
+  border-radius: 5px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  object-fit: cover !important;
+}
+
+#eh-tracked-works-container .work-item:hover img {
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+#eh-tracked-works-container .work-item a {
+  font-weight: 500 !important;
+  color: #4d6184 !important; /* 日式藍 */
+  text-decoration: none !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  line-height: 1.4 !important;
+  font-family: 'Noto Sans TC', Arial, sans-serif !important;
+}
+
+#eh-tracked-works-container .work-item a:hover {
+  color: #d85a63 !important; /* 櫻花紅 */
+  text-decoration: underline !important;
+}
+
+/* 標籤和日期信息 */
+#eh-tracked-works-container .work-item div:not(:has(> a)) {
+  color: #666 !important;
+  line-height: 1.3 !important;
+}
+
+/* 當沒有作品時的消息 */
+#eh-tracked-works-container p {
+  text-align: center !important;
+  padding: 20px !important;
+  color: #666 !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-radius: 6px !important;
+  margin: 20px 0 !important;
+  font-family: 'Noto Sans TC', Arial, sans-serif !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 自定義滾動條樣式 */
+#eh-tracker-sidebar::-webkit-scrollbar,
+#eh-tracked-works-container::-webkit-scrollbar {
+  width: 6px !important;
+  background-color: transparent !important;
+}
+
+#eh-tracker-sidebar::-webkit-scrollbar-track,
+#eh-tracked-works-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+#eh-tracker-sidebar::-webkit-scrollbar-thumb,
+#eh-tracked-works-container::-webkit-scrollbar-thumb {
+  background-color: rgba(77, 97, 132, 0.3) !important; /* 日式藍 */
+  border-radius: 3px !important;
+  transition: background-color 0.3s !important;
+}
+
+#eh-tracker-sidebar::-webkit-scrollbar-thumb:hover,
+#eh-tracked-works-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(77, 97, 132, 0.5) !important;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  #eh-tracker-sidebar {
+    width: 260px !important;
+    padding: 16px !important;
+  }
+  
+  #eh-tracked-works-container .work-item img {
+    width: 60px !important;
+  }
+}
+
+/* --- Text and Image Sizing --- */
+/* Text */
+.text-size-small .work-title { font-size: 0.85em; }
+.text-size-small .work-tag, .text-size-small .work-posted-date { font-size: 0.75em !important; }
+
+.text-size-medium .work-title { font-size: 1em !important; }
+.text-size-medium .work-tag, .text-size-medium .work-posted-date { font-size: 0.8em !important; }
+
+.text-size-large .work-title { font-size: 1.15em !important; }
+.text-size-large .work-tag, .text-size-large .work-posted-date { font-size: 0.9em !important; }
+
+/* Image */
+.image-size-small .work-thumbnail {
+  width: 70px !important;
+  height: 100px !important;
+}
+.image-size-medium .work-thumbnail {
+  width: 110px !important;
+  height: 160px !important;
+}
+.image-size-large .work-thumbnail {
+  width: 140px !important;
+  height: 200px !important;
+}
+
+/* Sidebar Ad Item Styles */
+.sidebar-ad-item {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.sidebar-ad-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+} 

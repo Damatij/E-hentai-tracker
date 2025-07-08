@@ -1,0 +1,476 @@
+/* E-Hentai Tracker 選項頁面 - 日式風格 */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+body {
+  font-family: 'Noto Sans TC', Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f8f5;
+  /* 精細的背景紋理 */
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23f8f8f5"/><path d="M0 0L100 100M100 0L0 100" stroke="%23f0e9e0" stroke-width="1"/></svg>');
+  background-size: 20px 20px;
+  color: #444;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #4d6184; /* 日式藍色調 */
+  color: white;
+  padding-top: 25px;
+  flex-shrink: 0;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+  background-image: url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="%234d6184"/><path d="M0,0 L200,200 M200,0 L0,200" stroke="%23455677" stroke-width="1"/></svg>');
+  background-size: 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 櫻花裝飾在側邊欄底部 */
+.sidebar:after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23f8d7db" d="M50,15c-13.8,0-25,11.2-25,25s11.2,25,25,25s25-11.2,25-25S63.8,15,50,15z"/><path fill="%23f8d7db" d="M50,15c-13.8,0-25,11.2-25,25s11.2,25,25,25s25-11.2,25-25S63.8,15,50,15z" transform="rotate(36 50 50)"/><path fill="%23f8d7db" d="M50,15c-13.8,0-25,11.2-25,25s11.2,25,25,25s25-11.2,25-25S63.8,15,50,15z" transform="rotate(72 50 50)"/></svg>');
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.sidebar a:hover, .sidebar a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  transform: translateX(5px);
+}
+
+.sidebar a.active {
+  border-left: 4px solid #d85a63; /* 櫻花紅 */
+  padding-left: 14px;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+h1 {
+  font-size: 1.8em;
+  color: #333;
+  border-bottom: 2px solid #d85a63; /* 櫻花紅 */
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-weight: 500;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+h1:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d85a63 25%, #d85a63 75%, transparent);
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #4d6184; /* 日式藍 */
+  margin-top: 30px;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+}
+
+h2:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(77, 97, 132, 0.2); /* 淡藍色下劃線 */
+}
+
+h3 {
+  font-size: 1.2em;
+  margin-top: 18px;
+  margin-bottom: 12px;
+  color: #333;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1em;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #444;
+  font-weight: 500;
+  padding-left: 15px;
+  position: relative;
+}
+
+h4:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: #d85a63; /* 櫻花紅 */
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(216, 90, 99, 0.2);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+input[type="text"] {
+  width: calc(100% - 110px);
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #e0ddd4; /* 米色邊框 */
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4d6184;
+  box-shadow: 0 0 0 3px rgba(77, 97, 132, 0.1);
+}
+
+button {
+  padding: 10px 18px;
+  background-color: #4d6184; /* 日式藍 */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  vertical-align: top;
+  margin-left: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #3c4f6d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.remove-btn {
+  background-color: #d85a63; /* 櫻花紅 */
+  font-size: 0.8em;
+  padding: 6px 10px;
+  margin-left: 8px;
+}
+
+.remove-btn:hover {
+  background-color: #b9454e;
+}
+
+#status {
+  margin-top: 15px;
+  padding: 8px 12px;
+  color: #28a745;
+  font-weight: bold;
+  min-height: 20px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+#status.error {
+  color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+#status.warning {
+  color: #ffc107;
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.settings-section, .tags-main-container, .tag-category-section, .blacklist-section-container {
+  margin-bottom: 25px;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-section:hover, .tags-main-container:hover, .tag-category-section:hover, .blacklist-section-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tags-management-layout {
+  display: flex;
+  gap: 25px;
+}
+
+.tags-main-column {
+  flex: 3;
+}
+
+.blacklist-column {
+  flex: 1.2;
+  min-width: 280px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.predefined-tag-btn {
+  background-color: #71879c; /* 藍灰色按鈕 */
+  font-size: 0.9em;
+  padding: 8px 14px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.predefined-tag-btn:hover {
+  background-color: #5a6e80;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.predefined-tag-btn.selected {
+  background-color: #4d6184; /* 日式藍 */
+  box-shadow: 0 0 8px rgba(77, 97, 132, 0.5);
+  position: relative;
+}
+
+.predefined-tag-btn.selected:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 12px 12px 0;
+  border-color: transparent #d85a63 transparent transparent; /* 櫻花紅角標 */
+}
+
+.blacklisted-tag-item-btn {
+  background-color: #fdf1f2; /* 淡櫻花紅背景 */
+  color: #d85a63;
+  border: 1px solid #f5c6cb;
+  padding: 6px 10px;
+  font-size: 0.9em;
+  align-items: center;
+  display: inline-flex;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.blacklisted-tag-item-btn .remove-btn {
+  margin-left: 8px;
+  padding: 3px 6px;
+  font-size: 0.7em;
+  background-color: #d85a63;
+  border: none;
+}
+
+.blacklisted-tag-item-btn .remove-btn:hover {
+  background-color: #b9454e;
+}
+
+select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #e0ddd4;
+  margin-bottom: 15px;
+  min-width: 200px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #444;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%23444" d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:focus {
+  outline: none;
+  border-color: #4d6184;
+  box-shadow: 0 0 0 3px rgba(77, 97, 132, 0.1);
+}
+
+.content-section {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content-section.active {
+  display: block;
+}
+
+.toggle-switch-label {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 5px;
+}
+
+.toggle-switch-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:checked + .slider {
+  background-color: #4d6184; /* 日式藍 */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4d6184;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+#desktop-notifications-label-text {
+  margin-left: 8px; /* Space between slider and text */
+  vertical-align: middle;
+  line-height: 1.5;
+  display: inline-block; 
+  /* flex-grow: 1; Removed to prevent unwanted text wrapping issues */
+}
+
+/* Message for empty tag categories */
+.no-tags-in-category-message {
+  color: #666;
+  font-style: italic;
+  padding: 10px 0; /* Adjusted padding */
+  margin: 0; /* Reset margin */
+  width: 100%;
+  text-align: left; /* Align with other content if needed, or center */
+  font-size: 0.9em;
+}
+
+/* 自定義滾動條樣式 */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(240, 237, 230, 0.5);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(113, 135, 156, 0.4); /* 藍灰色 */
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(113, 135, 156, 0.6);
+} 
+
+/* Ad Container Styles */
+.ad-in-column {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ad-in-column .ad-header {
+  font-size: 0.9em;
+  color: #888;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.ad-in-column .ad-banner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.ad-in-column .ad-banner img:hover {
+  transform: scale(1.02);
+} 
